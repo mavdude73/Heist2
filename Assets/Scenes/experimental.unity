@@ -239,6 +239,10 @@ Prefab:
       propertyPath: m_Drag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
   m_IsPrefabParent: 0
