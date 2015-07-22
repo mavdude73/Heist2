@@ -16,8 +16,6 @@ using Random = UnityEngine.Random;
 		[SerializeField] private float m_StickToGroundForce;
 		[SerializeField] private float m_GravityMultiplier;
 		[SerializeField] private MouseLook m_MouseLook;
-		[SerializeField] private bool m_UseFovKick;
-		[SerializeField] private bool m_UseHeadBob;
 		[SerializeField] private float m_StepInterval;
 		[SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
 		[SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
@@ -37,23 +35,92 @@ using Random = UnityEngine.Random;
 		private bool m_Jumping;
 		private AudioSource m_AudioSource;
 		
+
+		private ActivePlayer activePlayer;
+		private GameObject gameController;
+		private GameObject player1;                      
+		private GameObject player2;                      
+		private GameObject player3;                      
+		
 		// Use this for initialization
 		private void Start()
 		{
 			m_CharacterController = GetComponent<CharacterController>();
 			m_Camera = Camera.main;
+//			m_Camera = GetComponent<Camera> ();
 //			m_OriginalCameraPosition = m_Camera.transform.localPosition;
 			m_StepCycle = 0f;
 			m_NextStep = m_StepCycle/2f;
 			m_Jumping = false;
 			m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
 		}
-		
-		
+
+
+	void Awake ()
+	{
+		// Setting up the references.
+		gameController = GameObject.FindGameObjectWithTag("GameController");
+		player1 = GameObject.FindGameObjectWithTag("Player1");
+		player2 = GameObject.FindGameObjectWithTag("Player2");
+		player3 = GameObject.FindGameObjectWithTag("Player3");
+		activePlayer = gameController.GetComponent<ActivePlayer>();
+	}
+
+
+	void ShowActivePlayer ()
+	{
+		if (activePlayer.isPlayer1 ==  true)
+		{
+			player1.GetComponentInChildren<FirstPersonController>().enabled = true;
+			player1.GetComponentInChildren<Camera>().enabled = true;
+			player1.GetComponentInChildren<PlayerInventory>().enabled = true;
+
+			player2.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player2.GetComponentInChildren<Camera>().enabled = false;
+			player2.GetComponentInChildren<PlayerInventory>().enabled = false;
+
+			player3.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player3.GetComponentInChildren<Camera>().enabled = false;
+			player3.GetComponentInChildren<PlayerInventory>().enabled = false;
+		}
+		if (activePlayer.isPlayer2 == true)
+		{
+			player1.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player1.GetComponentInChildren<Camera>().enabled = false;
+			player1.GetComponentInChildren<PlayerInventory>().enabled = false;
+			
+			player2.GetComponentInChildren<FirstPersonController>().enabled = true;
+			player2.GetComponentInChildren<Camera>().enabled = true;
+			player2.GetComponentInChildren<PlayerInventory>().enabled = true;
+
+			player3.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player3.GetComponentInChildren<Camera>().enabled = false;
+			player3.GetComponentInChildren<PlayerInventory>().enabled = false;
+		}
+		if (activePlayer.isPlayer3 == true)
+		{
+			player1.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player1.GetComponentInChildren<Camera>().enabled = false;
+			player1.GetComponentInChildren<PlayerInventory>().enabled = false;
+			
+			player2.GetComponentInChildren<FirstPersonController>().enabled = false;
+			player2.GetComponentInChildren<Camera>().enabled = false;
+			player2.GetComponentInChildren<PlayerInventory>().enabled = false;
+			
+			player3.GetComponentInChildren<FirstPersonController>().enabled = true;
+			player3.GetComponentInChildren<Camera>().enabled = true;
+			player3.GetComponentInChildren<PlayerInventory>().enabled = true;
+		}
+
+	}
+
+
 		// Update is called once per frame
 		private void Update()
 		{
+			
 			RotateView();
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump)
@@ -86,6 +153,11 @@ using Random = UnityEngine.Random;
 		
 		private void FixedUpdate()
 		{
+			
+			ShowActivePlayer ();
+
+
+
 			float speed;
 			GetInput(out speed);
 			// always move along the camera forward as it is the direction that it being aimed at

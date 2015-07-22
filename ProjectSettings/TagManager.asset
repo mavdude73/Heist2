@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Level
+  - Player1
+  - Player2
+  - Player3
   layers:
   - Default
   - TransparentFX
