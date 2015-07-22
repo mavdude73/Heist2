@@ -6,27 +6,44 @@ public class DoorKeyCheck : MonoBehaviour
 	//public AudioClip keyGrab;                       // Audioclip to play when the key is picked up.
 	
 	
-	private GameObject player;                      // Reference to the player.
-	private PlayerInventory playerInventory;        // Reference to the player's inventory.
-	
+	private GameObject player1;
+	private GameObject player2;
+	private GameObject player3;
+	private PlayerInventory playerInventory;   
 	
 	void Awake ()
 	{
-		// Setting up the references.
-		player = GameObject.FindGameObjectWithTag("Player");
-		playerInventory = player.GetComponent<PlayerInventory>();
+		player1 = GameObject.Find ("FPSController1");
+		player2 = GameObject.Find ("FPSController2");
+		player3 = GameObject.Find ("FPSController3");
 	}
+
 
 
 	
 	void OnTriggerEnter (Collider other)
 	{
-		// If the colliding gameobject is the player...
-		if (other.gameObject == player && playerInventory.hasKey == true)
+
+		if (other.gameObject == player1 && player1.GetComponent<PlayerInventory>().hasKey == true)
 		{
-			playerInventory.hasKey = false;
+			player1.GetComponent<PlayerInventory>().hasKey = false;
 			Destroy (gameObject);
 		}
+
+		if (other.gameObject == player2 && player2.GetComponent<PlayerInventory>().hasKey == true)
+		{
+			player2.GetComponent<PlayerInventory>().hasKey = false;
+			Destroy (gameObject);
+		}
+
+		if (other.gameObject == player3 && player3.GetComponent<PlayerInventory>().hasKey == true)
+		{
+			player3.GetComponent<PlayerInventory>().hasKey = false;
+			Destroy (gameObject);
+		}
+
+
+
 	}
 
 }
