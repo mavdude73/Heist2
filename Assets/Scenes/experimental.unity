@@ -254,6 +254,10 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
+      propertyPath: m_Name
+      value: FPSController3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
@@ -495,6 +499,10 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
+      propertyPath: m_Name
+      value: FPSController1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
   m_IsPrefabParent: 0
@@ -663,6 +671,10 @@ Prefab:
     - target: {fileID: 112678, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 85923d0897a3bef4fbb659ededab66e7, type: 2}
+      propertyPath: m_Name
+      value: FPSController2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
