@@ -9,17 +9,13 @@ public class KeyPickup : MonoBehaviour
 	private GameObject player1;
 	private GameObject player2;
 	private GameObject player3;
-	private PlayerInventory playerInventory;        // Reference to the player's inventory.
-//	private GameObject playerChild;
+	private PlayerInventory playerInventory;   
 	
 	void Awake ()
 	{
-		// Setting up the references.
 		player1 = GameObject.Find ("FPSController1");
 		player2 = GameObject.Find ("FPSController2");
 		player3 = GameObject.Find ("FPSController3");
-
-
 	}
 	
 	
